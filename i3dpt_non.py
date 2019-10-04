@@ -486,7 +486,7 @@ if __name__ == '__main__':
     i3d_non = I3D_NON()
     i3d = I3D(num_classes=400)
     i3d.load_state_dict(torch.load('./model_rgb.pth'))
-    state_dict = model.state_dict()
+    state_dict = model.state_dict() # https://discuss.pytorch.org/t/how-to-add-my-custom-layer-after-load-pre-traind-weight/57389/2
     i3d_non.load_state_dict(state_dict, strict=False)
     i3d_non.conv3d_0c_1x1 = Unit3Dpy(in_channels=1024,
                                      out_channels=51,
