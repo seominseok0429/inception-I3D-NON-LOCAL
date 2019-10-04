@@ -14,6 +14,8 @@ https://arxiv.org/pdf/1706.03762.pdf <-Cited Papers
 I3D resnet50 - res3's feature map size is (28,28). I3D inception - mixed_3c's feature map size is (28,28)
 I3D resnet50 - res4's feature map size is (14,14). I3D inception - mixed_4d's feature map size is (14,14)
 
+<img width="106" alt="캡처" src="https://user-images.githubusercontent.com/33244972/66208762-d913be00-e6f0-11e9-8515-c792b8b1e6db.PNG">
+
 **Added a non-local block with matching feature map size.**
 
 I think it's complete, but it still needs to be reviewed.
