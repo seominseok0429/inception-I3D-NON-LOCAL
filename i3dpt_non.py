@@ -452,8 +452,9 @@ class NonLocalBlock(nn.Module):
         for m in self.modules():
             if isinstance(m, nn.Conv3d):
                 m.weight = nn.init.kaiming_normal_(m.weight, mode='fan_out')
+                m.bias.data.zeore_()
             elif isinstance(m, nn.BatchNorm3d):
-                m.weight.data.fill_(1)
+                m.weight.data.fill_(0)
                 m.bias.data.zero_()
                 
     def forward(self, x):
