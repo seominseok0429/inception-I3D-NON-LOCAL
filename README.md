@@ -26,7 +26,9 @@ I3D resnet50 - res4's feature map size is (14,14). I3D inception - mixed_4d's fe
 
 I think it's complete, but it still needs to be reviewed.
 
----
+***
+
+**If tf_begin_index is 8, the front of the added NonLocalBlock is all freezed and finetunes the rest.**
 
 python3 main.py --root ./ \
         --video_path optical_flow_tvl1 \
