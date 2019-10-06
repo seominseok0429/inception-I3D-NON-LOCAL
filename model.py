@@ -39,12 +39,28 @@ def generate_model(opt):
             model_non.conv3d_0c_1x1 = Unit3Dpy(in_channels=1024, out_channels=51, 
                                                kernel_size=(1, 1, 1), activation=None, use_bias=True,
                                                use_bn=False)
-            count = 0
-            for child in model_non.children():
-                count += 1
-                if count < opt.ft_begin_index:
-                    for param in child.parameters():
-                        param.requires_grad = False
+            if opt.only_nonlocal:
+                for child,b in model_non.named_children():
+                    if child == 'NonLocalBlock_mixed_3' :
+                        for param in b.parameters():
+                            param.requires_grad = True
+                    elif child == 'NonLocalBlock_mixed_4':
+                        for param in b.parameters():
+                            param.requires_grad = True
+                    elif child == 'conv3d_0c_1x1':
+                        for param in b.parameters():
+                            param.requires_grad = True
+                    else:
+                        print(child)
+                        for param in b.parameters():
+                            param.requires_grad = False
+            else:
+                count = 0
+                for child in model_non.children():
+                    count += 1
+                    if count < opt.ft_begin_index:
+                        for param in child.parameters():
+                            param.requires_grad = False
             model_non = model_non.cuda()
             model_non = nn.DataParallel(model_non)
             print('True')
