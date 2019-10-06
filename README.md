@@ -8,7 +8,9 @@ https://arxiv.org/pdf/1706.03762.pdf <-Cited Papers
 
 
 https://github.com/kenshohara/3D-ResNets-PyTorch <- base code
+
 https://github.com/hassony2/kinetics_i3d_pytorch <- i3d code
+
 https://github.com/Tushar-N/pytorch-resnet3d <- non local code
 
 **The non local implementation was only a dot-product.**
@@ -30,6 +32,7 @@ I3D resnet50 - res4's feature map size is (14,14). I3D inception - mixed_4d's fe
 ***
 
 **If tf_begin_index is 8, the front of the added NonLocalBlock is all freezed and finetunes the rest.**
+
 **if only_nonlocal True,  Freeze everything except the non-local block and the last layer.**
 
 
