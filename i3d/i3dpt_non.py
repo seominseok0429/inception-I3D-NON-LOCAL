@@ -8,29 +8,7 @@ import numpy as np
 import torch
 from torch.nn import ReplicationPad3d
 
-def get_fine_tuning_parameters2(model, ft_begin_index):
-    if ft_begin_index == 0:
-        return model.parameters()
-    if ft_begin_index == 3:
-        ft_module_names = []
-    else:
-        ft_module_names = []
-    ft_module_names.append('NonLocalBlock_mixed_3')
-    for i in range(ft_begin_index, 6): # if ft_begin_index == 4 , start index == nonLocalBlock 3
-        ft_module_names.append('mixed_{}'.format(i))
-    ft_module_names.append('conv3d_0c_1x1')
 
-    parameters = []
-    for k, v in model.named_parameters():
-        for ft_module in ft_module_names:
-            if ft_module in k:
-                print(k, '---', ft_module)
-                parameters.append({'params': v})
-                break
-            else:
-                parameters.append({'params': v, 'lr': 0.0})
-               
-    return parameters
 
 def get_padding_shape(filter_shape, stride):
     def _pad_top_bottom(filter_dim, stride_val):
@@ -507,9 +485,3 @@ class NonLocalBlock(nn.Module):
 
 
 
-if __name__ == '__main__':
-    i3d_non = I3D_NON()
-    inputs = torch.rand(2,3,64,224,224)
-    
-    out = i3d_non(inputs)
-    print(out.shape)
