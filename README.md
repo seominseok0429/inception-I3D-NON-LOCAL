@@ -49,3 +49,9 @@ python3 main.py --root ./ \
                 --dropout_prob 0.5 --pretrain_path pretrained/model_flow.pth \
                 --ft_begin_index 8 --non_local True
 ```
+
+***
+
+I3D non_local has about 7% more parameters than normal I3D.
+
+![스크린샷, 2019-10-07 17-58-39](https://user-images.githubusercontent.com/33244972/66298198-3051a280-e92c-11e9-82e2-4968b844c970.png)
