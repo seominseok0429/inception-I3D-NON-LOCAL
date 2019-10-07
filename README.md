@@ -36,7 +36,7 @@ I3D resnet50 - res4's feature map size is (14,14). I3D inception - mixed_4d's fe
 **if only_nonlocal True,  Freeze everything except the non-local block and the last layer.**
 
 
-python3 main.py --root ./ \
+        python3 main.py --root ./ \
         --video_path optical_flow_tvl1 \
         --annotation_path testTrainMulti_7030_splits/hmdb51_1.json \
         --result_path results \
