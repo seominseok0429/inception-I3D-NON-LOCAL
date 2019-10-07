@@ -35,16 +35,17 @@ I3D resnet50 - res4's feature map size is (14,14). I3D inception - mixed_4d's fe
 
 **if only_nonlocal True,  Freeze everything except the non-local block and the last layer.**
 
-
-        python3 main.py --root ./ \
-        --video_path optical_flow_tvl1 \
-        --annotation_path testTrainMulti_7030_splits/hmdb51_1.json \
-        --result_path results \
-        --dataset hmdb51_optical_flow_faster \
-        --n_classes 400 --n_finetune_classes 51 \
-        --model i3d --batch_size 8 \
-        --n_threads 20 --checkpoint 1 --lr_patience 2 --epoch_multi 10 \
-        --learning_rate 0.001 --sample_duration 64 \
-        --sample_size 224 --non_local True \
-        --dropout_prob 0.5 --pretrain_path pretrained/model_flow.pth \
-        --ft_begin_index 8 --non_local True
+```bash
+python3 main.py --root ./ \
+                --video_path optical_flow_tvl1 \
+                --annotation_path testTrainMulti_7030_splits/hmdb51_1.json \
+                --result_path results \
+                --dataset hmdb51_optical_flow_faster \
+                --n_classes 400 --n_finetune_classes 51 \
+                --model i3d --batch_size 8 \
+                --n_threads 20 --checkpoint 1 --lr_patience 2 --epoch_multi 10 \
+                --learning_rate 0.001 --sample_duration 64 \
+                --sample_size 224 --non_local True \
+                --dropout_prob 0.5 --pretrain_path pretrained/model_flow.pth \
+                --ft_begin_index 8 --non_local True
+```
