@@ -8,6 +8,11 @@ def parse_opts():
         type=str,
         help='Root directory path of data')
     parser.add_argument(
+        '--only_nonlocal',
+        default=False,
+        type=bool,
+        help='freeze all layer, Except non local blocak, and last layer')
+    parser.add_argument(
         '--non_local',
         default=False,
         type=bool,
