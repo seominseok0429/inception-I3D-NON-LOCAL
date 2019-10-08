@@ -55,3 +55,28 @@ python3 main.py --root ./ \
 I3D non_local has about 7% more parameters than normal I3D.
 
 ![스크린샷, 2019-10-07 17-58-39](https://user-images.githubusercontent.com/33244972/66298198-3051a280-e92c-11e9-82e2-4968b844c970.png)
+
+***
+
+
+If you see the error below, fix the code. 
+
+cunn_ClassNLLCriterion_updateOutput_kernel(Dtype *, Dtype *, Dtype *, long *, Dtype *, int, int, int, int, long) [with Dtype = float, Acctype = float]: block: [0,0,0], thread: [26,0,0] Assertion t >= 0 && t < n_classes failed.
+
+
+ https://github.com/seominseok0429/inception-I3D-NON-LOCAL/blob/master/datasets/hmdb51_flow_faster.py#L60
+ 
+```python
+ 60 def get_class_labels(data):
+ 61     class_labels_map = {}
+ 62     index = 0
+ 63 
+ 64     for class_label in data['labels']:
+ 65         if class_label is '':
+ 66             print('pass')
+ 67         else:
+ 68             class_labels_map[class_label] = index
+ 69             index += 1
+ 70     return class_labels_map
+```
+
