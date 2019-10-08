@@ -1,4 +1,7 @@
+
 # inception-I3D-NON-LOCAL
+
+***We only implement hmdb51 tvl1 optical flow.***
 
 https://github.com/facebookresearch/video-nonlocal-net/blob/master/lib/models/nonlocal_helper.py <-- Original Code
 
