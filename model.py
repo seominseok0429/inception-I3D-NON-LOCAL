@@ -39,6 +39,21 @@ def generate_model(opt):
             model_non.conv3d_0c_1x1 = Unit3Dpy(in_channels=1024, out_channels=51, 
                                                kernel_size=(1, 1, 1), activation=None, use_bias=True,
                                                use_bn=False)
+            for i in model_non.children():
+                for name1, j in i.named_children():
+                    if name1 == 'batch3d':
+                        for param in j.parameters():
+                            param.requires_grad =False
+                    if 'branch' in name1:
+                        for name2, k in j.named_children():
+                            if name2 == 'batch3d':
+                                for param1 in k.parameters():
+                                    param1.requires_grad =False
+                            if name2 =='0' or name2=='1':
+                                for name3, aa in k.named_children():
+                                    if name3 == 'batch3d':
+                                        for param2 in k.parameters():
+                                            param2.requires_grad =False
             if opt.only_nonlocal:
                 for child,b in model_non.named_children():
                     if child == 'NonLocalBlock_mixed_3' :
